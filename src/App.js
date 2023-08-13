@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import TournamentList from './components/TournamentList';
+import TournamentForm from './components/TournamentForm';
+import ParticipantForm from './components/ParticipantForm';
+import ParticipantList from './components/ParticipantList';
 
-function App() {
+function App(tournamentId) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col-md-6">
+          <TournamentForm />
+        </div>
+        <div className="col-md-6">
+          <ParticipantForm />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <TournamentList />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          {/* Render ParticipantList with appropriate tournamentId */}
+          <ParticipantList tournamentId={{tournamentId}} />
+        </div>
+      </div>
     </div>
   );
 }
