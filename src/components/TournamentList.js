@@ -11,7 +11,7 @@ const TournamentList = () => {
 
   const fetchTournaments = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/tournaments/:id');
+      const response = await axios.get(`http://localhost:8000/api/tournaments/${tournaments._id}`);
       setTournaments(response.data);
     } catch (error) {
       console.error('Error fetching tournaments:', error);

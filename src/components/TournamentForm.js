@@ -34,7 +34,7 @@ const TournamentForm = (tournamentId) => {
 
     const updatedTournament = { name, startDate, endDate };
     try {
-      await axios.put(`http://localhost:8000/api/tournaments/${tournamentId}`, updatedTournament);
+      await axios.put(`http://localhost:8000/api/tournaments/${editingTournament._id}`,updatedTournament);
       setEditingTournament(null);
       fetchTournaments();
       // Clear form fields
@@ -51,7 +51,7 @@ const TournamentForm = (tournamentId) => {
 
     const newTournament = { name, startDate, endDate };
     try {
-      await axios.post('http://localhost:8000/api/tournaments/', newTournament);
+      await axios.post('http://localhost:8000/api/tournaments', newTournament);
       fetchTournaments();
       // Clear form fields
       setName('');

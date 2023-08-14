@@ -18,7 +18,7 @@ function App(tournamentId) {
       </div>
       <div className="row">
         <div className="col">
-          <TournamentList />
+          <TournamentList  />
         </div>
       </div>
       <div className="row">

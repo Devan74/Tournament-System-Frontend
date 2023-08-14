@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-const ParticipantItem = ({ participants, onDelete }) => {
+const ParticipantItem = ({ participant, onDelete }) => {
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/participants/${participants._id}`);
+      await axios.delete(`http://localhost:8000/api/participants/${participant._id}`);
       onDelete();
     } catch (error) {
       console.error('Error deleting participant:', error);
@@ -13,7 +13,7 @@ const ParticipantItem = ({ participants, onDelete }) => {
 
   return (
     <div>
-      <p>{participants.name}</p>
+      <p>{participant.name}</p>
       <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
     </div>
   );

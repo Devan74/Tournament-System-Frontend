@@ -14,7 +14,7 @@ const ParticipantForm = ({ tournamentId }) => {
 
   const fetchParticipants = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/tournaments/${tournamentId}`);
+      const response = await axios.get(`http://localhost:8000/api/participants/${tournamentId}`);
       setParticipants(response.data);
     } catch (error) {
       console.error('Error fetching participants:', error);
@@ -120,7 +120,7 @@ const ParticipantForm = ({ tournamentId }) => {
         {participants.map((participant) => (
           <div key={participant._id}>
             <p>{participant.name}</p>
-            <button className="btn btn-warning btn-sm" onClick={() => handleEdit(participant)}>
+            <button className="btn btn-warning btn-sm m-1" onClick={() => handleEdit(participant)}>
               Edit
             </button>
             <button className="btn btn-danger btn-sm" onClick={() => handleDelete(participant._id)}>

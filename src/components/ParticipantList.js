@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ParticipantItem from './ParticipantItem';
 
-const ParticipantList = ({ tournamentId }) => {
+const ParticipantList = () => {
   const [participants, setParticipants] = useState([]);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const ParticipantList = ({ tournamentId }) => {
 
   const fetchParticipants = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/tournaments/${tournamentId}`);
+      const response = await axios.get(`http://localhost:8000/api/participants/${participants._id}`);
       setParticipants(response.data);
     } catch (error) {
       console.error('Error fetching participants:', error);
