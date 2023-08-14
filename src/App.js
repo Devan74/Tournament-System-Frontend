@@ -4,7 +4,7 @@ import TournamentList from './components/TournamentList';
 import TournamentForm from './components/TournamentForm';
 import ParticipantForm from './components/ParticipantForm';
 import ParticipantList from './components/ParticipantList';
-export  const URL = "http://localhost:8000";
+export  const URL = "https://tournament-system-mtwt.onrender.com";
 
 function App(tournamentId) {
   return (
