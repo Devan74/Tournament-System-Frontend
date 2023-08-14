@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import {URL} from '../App';
 const TournamentForm = (tournamentId) => {
   const [tournaments, setTournaments] = useState([]);
   const [editingTournament, setEditingTournament] = useState(null);
@@ -8,13 +8,13 @@ const TournamentForm = (tournamentId) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
-  useEffect(() => {
-    fetchTournaments();
-  }, []);
+  useEffect((tournamentId) => {
+    // fetchTournaments();
+  }, [tournamentId]);
 
-  const fetchTournaments = async () => {
+  const fetchTournaments = async (tournamentId) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/tournaments/${tournamentId}`);
+      const response = await axios.get(`${URL}/api/tournaments/${tournamentId}`);
       setTournaments(response.data);
     } catch (error) {
       console.error('Error fetching tournaments:', error);
@@ -29,12 +29,12 @@ const TournamentForm = (tournamentId) => {
   };
 
   const handleUpdate = async (e) => {
-    e.preventDefault();
     if (!editingTournament) return;
-
+    e.preventDefault();
+    
     const updatedTournament = { name, startDate, endDate };
     try {
-      await axios.put(`http://localhost:8000/api/tournaments/${editingTournament._id}`,updatedTournament);
+      await axios.put(`${URL}/api/tournaments/${editingTournament._id}`,updatedTournament);
       setEditingTournament(null);
       fetchTournaments();
       // Clear form fields
@@ -51,7 +51,7 @@ const TournamentForm = (tournamentId) => {
 
     const newTournament = { name, startDate, endDate };
     try {
-      await axios.post('http://localhost:8000/api/tournaments', newTournament);
+      await axios.post(`${URL}/api/tournaments`, newTournament);
       fetchTournaments();
       // Clear form fields
       setName('');
@@ -64,7 +64,7 @@ const TournamentForm = (tournamentId) => {
 
   const handleDelete = async (tournamentId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/tournaments/${tournamentId}`);
+      await axios.delete(`${URL}/api/tournaments/${tournamentId}`);
       fetchTournaments();
     } catch (error) {
       console.error('Error deleting tournament:', error);

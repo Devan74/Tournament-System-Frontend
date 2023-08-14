@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import {URL} from '../App';
 
 const ParticipantItem = ({ participant, onDelete }) => {
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/participants/${participant._id}`);
+      await axios.delete(`${URL}/api/participants/${participant._id}`);
       onDelete();
     } catch (error) {
       console.error('Error deleting participant:', error);

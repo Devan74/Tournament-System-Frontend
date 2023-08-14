@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {URL} from '../App';
 
 const ParticipantForm = ({ tournamentId }) => {
   const [participants, setParticipants] = useState([]);
@@ -14,7 +15,7 @@ const ParticipantForm = ({ tournamentId }) => {
 
   const fetchParticipants = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/participants/${tournamentId}`);
+      const response = await axios.get(`${URL}/api/participants/${tournamentId}`);
       setParticipants(response.data);
     } catch (error) {
       console.error('Error fetching participants:', error);
@@ -34,7 +35,7 @@ const ParticipantForm = ({ tournamentId }) => {
 
     const updatedParticipant = { name, email, password };
     try {
-      await axios.put(`http://localhost:8000/api/participants/${editingParticipant._id}`, updatedParticipant);
+      await axios.put(`${URL}/api/participants/${editingParticipant._id}`, updatedParticipant);
       setEditingParticipant(null);
      
       // Clear form fields
@@ -51,7 +52,7 @@ const ParticipantForm = ({ tournamentId }) => {
 
     const newParticipant = { name, email, password, tournamentId };
     try {
-      await axios.post('http://localhost:8000/api/participants', newParticipant);
+      await axios.post(`${URL}/api/participants`, newParticipant);
       fetchParticipants();
       // Clear form fields
       setName('');
@@ -64,7 +65,7 @@ const ParticipantForm = ({ tournamentId }) => {
 
   const handleDelete = async (participantId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/participants/${participantId}`,);
+      await axios.delete(`${URL}/api/participants/${participantId}`,);
       fetchParticipants();
     } catch (error) {
       console.error('Error deleting participant:', error);

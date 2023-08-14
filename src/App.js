@@ -4,6 +4,7 @@ import TournamentList from './components/TournamentList';
 import TournamentForm from './components/TournamentForm';
 import ParticipantForm from './components/ParticipantForm';
 import ParticipantList from './components/ParticipantList';
+export  const URL = "http://localhost:8000";
 
 function App(tournamentId) {
   return (
@@ -13,12 +14,12 @@ function App(tournamentId) {
           <TournamentForm />
         </div>
         <div className="col-md-6">
-          <ParticipantForm />
+          <ParticipantForm  />
         </div>
       </div>
       <div className="row">
         <div className="col">
-          <TournamentList  />
+          <TournamentList tournamentId={{tournamentId}} />
         </div>
       </div>
       <div className="row">

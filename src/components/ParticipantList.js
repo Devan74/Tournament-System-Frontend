@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ParticipantItem from './ParticipantItem';
+import {URL} from '../App';
 
 const ParticipantList = () => {
   const [participants, setParticipants] = useState([]);
@@ -11,7 +12,7 @@ const ParticipantList = () => {
 
   const fetchParticipants = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/participants/${participants._id}`);
+      const response = await axios.get(`${URL}/api/participants/${participants._id}`);
       setParticipants(response.data);
     } catch (error) {
       console.error('Error fetching participants:', error);
